@@ -35,7 +35,7 @@ Update site: http://download.eclipse.org/acceleo/updates/releases/3.7
 Packages: Acceleo, additional interpreters.
 
 ### UML Designer (Technische Universität Ilmenau's branch)
-A modified version of the graphical tooling to edit and visualize UML models "UML Designer" (http://www.umldesigner.org/), released under the *EPL Open-Source License*. Its source code is currently available by sending a request to the Software and System Engineering department of the TU Ilmenau.
+A modified version of the graphical tooling to edit and visualize UML models "UML Designer" (http://www.umldesigner.org/), released under the *EPL Open-Source License*. Its original source code is available on GitHub [here](https://github.com/ObeoNetwork/UML-Designer), whereas our modified code is currently available by sending a request to the Software and System Engineering department of the TU Ilmenau.
 
 Update site: https://sse.tu-ilmenau.de/umldesigner-update
 #### What are the differences between this branch and the original one?
