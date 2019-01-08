@@ -22,14 +22,14 @@ Select the transformation you want to run (for example AD2UPetriNetTransformatio
 The following packages are not required for performing the M2M transformation, but are suggested and provide a graphical editor for UML Diagrams.
 
 ### Sirius
-More infos: https://www.eclipse.org/sirius/
+More information: https://www.eclipse.org/sirius/
 
 Check the latest version https://www.eclipse.org/sirius/download.html and select "Update Site", and, during the installation in Eclipse, **deselect all experimental packages!**
 
 Update site (for v. 6.1.1 compatible with Eclipse 2018-12): http://download.eclipse.org/sirius/updates/releases/6.1.1/photon
 
 ### Acceleo
-More infos: https://www.eclipse.org/acceleo/
+More information: https://www.eclipse.org/acceleo/
 
 Update site: http://download.eclipse.org/acceleo/updates/releases/3.7
 Packages: Acceleo, additional interpreters.
