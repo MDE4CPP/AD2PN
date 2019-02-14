@@ -51,7 +51,7 @@ library eDSPNQueries(){
 	
 	query getOutgoingIndex(d:DecisionNode, e:ActivityNode):Integer{
 	 var i := 1;
-	 d.outgoing->forEach(edge){
+	 d.outgoing->asOrderedSet()->sortedBy(target.name)->forEach(edge){
 	 if(e = edge.target){
 		return i;
 	 };

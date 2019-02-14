@@ -19,7 +19,7 @@ main( ){
 	assert fatal (uml.objectsOfKind(Model)->notEmpty()) with log ('Expecting at least one Model in the provided UML model.');
 	assert fatal (uml.objectsOfKind(Activity)->notEmpty()) with log ('Expecting at least one activity in the UML model.');
 	assert warning (uml.objectsOfKind(Activity)->size() <= 1) with log ('This models cointains more than one activity. Only the first one will be converted.', uml.objectsOfKind(Activity)); //kinds: warning, error, fatal
-	uml.rootObjects()[Model]->map Model2AD(); //[Type] filter all elements of type Type from the set.
+	uml.rootObjects()[Model]->asOrderedSet()->sortedBy(name)->map Model2AD(); //[Type] filter all elements of type Type from the set.
 	log("Main: Transformation completed.");
 }
 
@@ -77,46 +77,46 @@ mapping Activity::activityToSCPN() : EDSPNNet{
     
     //Transform Initial Nodes
     log("== Initial Nodes ==");
-    place += self.ownedElement[InitialNode]->map initialNodeTransform();
+    place += self.ownedElement[InitialNode]->asOrderedSet()->sortedBy(name)->map initialNodeTransform();
     
     //Transform ActivityParameterNodes
 	log("== Activity Parameter Nodes ==");
-    place +=  self.ownedElement[ActivityParameterNode]->map activityParameterNodeTransform();
+    place +=  self.ownedElement[ActivityParameterNode]->asOrderedSet()->sortedBy(name)->map activityParameterNodeTransform();
     
     //Transform Flow Final Nodes
     log("== Flow Final Nodes ==");
-    place += self.ownedElement[FlowFinalNode]->map flowFinalNodeTransform();
+    place += self.ownedElement[FlowFinalNode]->asOrderedSet()->sortedBy(name)->map flowFinalNodeTransform();
     
     //Transform Central Buffer Nodes
     log("== Central Buffer Node ==");
-    place += self.ownedElement[CentralBufferNode]->map centralBufferNodeTransform();
+    place += self.ownedElement[CentralBufferNode]->asOrderedSet()->sortedBy(name)->map centralBufferNodeTransform();
     
     //Transform Activity Final Nodes
     log("== Activity Final Nodes ==");
-    place += self.ownedElement[ActivityFinalNode]->map activityFinalNodeTransform();
+    place += self.ownedElement[ActivityFinalNode]->asOrderedSet()->sortedBy(name)->map activityFinalNodeTransform();
     
     //Transform Fork Nodes
 	 log("== Fork Nodes ==");
-    exponentialTransition += self.ownedElement[ForkNode]->map forkNodeTransform();
+    exponentialTransition += self.ownedElement[ForkNode]->asOrderedSet()->sortedBy(name)->map forkNodeTransform();
     
     //Transform Join Nodes
 	 log("== Join Nodes ==");	
-    immediateTransition += self.ownedElement[JoinNode]->map joinNodeTransform();
+    immediateTransition += self.ownedElement[JoinNode]->asOrderedSet()->sortedBy(name)->map joinNodeTransform();
     
     //Transform Decision nodes 
     log("== Decision Nodes ==");
-    var decisionNodes := self.ownedElement[DecisionNode]->map decisionNodeTransform(); 
+    var decisionNodes := self.ownedElement[DecisionNode]->asOrderedSet()->sortedBy(name)->map decisionNodeTransform(); 
     place += decisionNodes.p;
     immediateTransition += decisionNodes.trans;
     arc += decisionNodes.arcs;
     
     //Transform Merge nodes
     log("== Merge Nodes ==");
-    place += self.ownedElement[MergeNode]->map mergeNodeTransform(); 
+    place += self.ownedElement[MergeNode]->asOrderedSet()->sortedBy(name)->map mergeNodeTransform(); 
     
     //Transform Actions and pins
     log("== Action ==");
-    var temp = self.ownedElement[Action]->map actionTransform();
+    var temp = self.ownedElement[Action]->asOrderedSet()->sortedBy(name)->map actionTransform();
     exponentialTransition += temp.d;
     place += temp.pl;
     arc += temp.arcs;

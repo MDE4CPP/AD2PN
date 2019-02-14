@@ -101,7 +101,7 @@ mapping DecisionNode::decisionNodeTransform(): p : Place, trans : List(Immediate
 		p := new Place(safeString(self.name), 0);
 	}
 	var i := 1;
-	self.outgoing->forEach(e){
+	self.outgoing->asOrderedSet()->sortedBy(target.name)->forEach(e){
 		var t : ImmediateTransition;
 		var arc := new Arc();
 		arc.fromNode := p.id;
@@ -126,7 +126,7 @@ mapping Action::actionTransform() : d : ExponentialTransition, im: ImmediateTran
 		d := new ExponentialTransition(safeString(self.name)+"_end");
 		im := new ImmediateTransition(safeString(self.name)+"_start");
 	    log("= Pin: =", self.ownedElement[Pin]->size());
-		var temp = self.ownedElement[Pin]->map pinTransform();
+		var temp = self.ownedElement[Pin]->asOrderedSet()->sortedBy(name)->map pinTransform();
 		pl := temp.p->asList();
 		arcs := temp.a->asList();
 	}
